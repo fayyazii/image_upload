@@ -1,0 +1,18 @@
+
+import 'dart:io';
+
+import 'package:firebase_storage/firebase_storage.dart';
+
+class FayyazUploadImageRepo{
+
+   static Future<String> upload(File file)async
+   {
+     Reference referenceroot = FirebaseStorage.instance.ref();
+     Reference referenceDirImage = referenceroot.child("images");
+     Reference referenceImagetoUpload = referenceDirImage.child(DateTime.now().millisecondsSinceEpoch.toString());
+     await referenceImagetoUpload.putFile(file);
+     var imgUrl= referenceImagetoUpload.getDownloadURL();
+
+     return imgUrl;
+   }
+}
