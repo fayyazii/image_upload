@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:image_upload/cubits/getimages/get_images_cubit.dart';
 import 'package:image_upload/cubits/upload_image/upload_image_cubit.dart';
 
 class ShowAllImages extends StatelessWidget {
@@ -9,21 +10,21 @@ class ShowAllImages extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: BlocBuilder<UploadImageCubit, UploadImageState>(
+      body: BlocBuilder<GetImagesCubit, GetImagesState>(
         builder: (context, state) {
-          if(state is UploadImageLoading)
+          if(state is GetImagesLoading)
             {
               return const Center(child: CircularProgressIndicator(),);
             }
-          if(state is UploadImageLoaded) {
+          if(state is GetImagesLoaded) {
             return ListView.builder(
-              //itemCount: state.,
+              itemCount: state.images.length,
               itemBuilder: (context,index) {
                 return Container(
                 height: 300,
                 width: 300,
                 child: Card(
-                  child: Image.network("src"),
+                  child: Image.network(state.images[index].imageUrl),
                 ),
           );
               }

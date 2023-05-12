@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:image_upload/cubits/getimages/get_images_cubit.dart';
 import 'package:image_upload/cubits/upload_image/upload_image_cubit.dart';
+import 'package:image_upload/views/fayyaz_image_screen.dart';
 import 'package:image_upload/views/fayyaz_select_image.dart';
 import 'package:image_upload/views/homepage.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -24,6 +26,7 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context)=>UploadImageCubit()),
+        BlocProvider(create: (context)=>GetImagesCubit()),
       ],
       child: MaterialApp(
         title: 'Flutter Demo',
@@ -31,7 +34,7 @@ class MyApp extends StatelessWidget {
 
           primarySwatch: Colors.blue,
         ),
-        home: SelectImage(),
+        home: ShowAllImages(),
       ),
     );
   }
