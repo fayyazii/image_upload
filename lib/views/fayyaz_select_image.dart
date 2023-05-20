@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:image_upload/repositories/_fayyaz_upload_image_repo.dart';
 import 'package:image_upload/repositories/fayyaz_upload_data.dart';
+import 'package:image_upload/views/fayyaz_image_screen.dart';
 
 class SelectImage extends StatefulWidget {
    SelectImage({Key? key}) : super(key: key);
@@ -68,6 +69,9 @@ class _SelectImageState extends State<SelectImage> {
             },
             child: const Text("Upload Image"),
           ),
+          MaterialButton(onPressed: (){
+            Navigator.push(context, MaterialPageRoute(builder: (context)=> ShowAllImages()));
+          },child: Text("show Images"),)
         ],
       ),
     );
