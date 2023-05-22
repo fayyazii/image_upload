@@ -109,21 +109,18 @@ class UplaodcardDatascreen extends StatelessWidget {
                 {
                   return Center(child:Text(state.err) ,);
                 }
-              if(state is UploadCardLoaded) {
+              else{
                 return MaterialButton(
                 color: Colors.green,
                 onPressed: () async
                 {
                   var data = await getPayLoad();
                   context.read<UploadCardCubit>().uploadCard(data, file!);
-                  data.clear();
+                  //data.clear();
                 },
                 child: const Text("Upload"),);
               }
-              else {
-                return  Container(height: 100,
-                  color: Colors.red,);
-              }
+
 
             },
           ),

@@ -8,7 +8,7 @@ class UploadCardPicRepo{
   {
     Reference referenceroot = FirebaseStorage.instance.ref();
     Reference referenceDirImage = referenceroot.child('cardimages');
-    Reference referenceImageUpload = referenceroot.child(DateTime.now().millisecondsSinceEpoch.toString());
+    Reference referenceImageUpload = referenceDirImage.child(DateTime.now().millisecondsSinceEpoch.toString());
     await referenceImageUpload.putFile(file);
     var img_url = await referenceImageUpload.getDownloadURL();
     return img_url;
